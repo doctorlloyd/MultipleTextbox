@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+<html>
+    <head>
+        <title>Student Registration</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    </head>
+    <body>
+        <h1>Student Registration form</h1>
+        <p>
+            Enter the student details below 
+        </p>
+        <form action="AddStudentServlet.do" method="POST">
+            <table>
+                <tr>
+                    <td>Enter student number:</td>
+                    <td><input type="text" name="studno"/></td>
+                </tr>
+                <tr>
+                    <td>Enter student name:</td>
+                    <td><input type="text" name="name"/></td>
+                </tr>
+                <tr>
+                    <td>Enter student surname:</td>
+                    <td><input type="text" name="surname"/></td>
+                </tr>
+                <tr>
+                    <td>Enter student gender:</td>
+                    <td><input type="text" name="gender"/></td>
+                </tr>
+                <tr>
+                    <td>Enter student email:</td>
+                    <td>
+                        <div id="myDiv">
+                            <input type="text" id="txt_1" onkeydown="newTextBox(this)" />
+                        </div>
+                    </td>
+                </tr>
+                <tr>
+                    <td></td>
+                    <td>
+                        <script type="text/javascript">
+                            function newTextBox(element) {
+                                if (!element.value) {
+                                    element.parentNode.removeChild(element.nextElementSibling);
+                                    return;
+                                } else if (element.nextElementSibling)
+                                    return;
+                                var newTxt = element.cloneNode();
+                                newTxt.id = 'txt_' + (parseInt(element.id.substring(element.id.indexOf('_') + 1)) + 1);
+                                newTxt.value = '';
+                                element.parentNode.appendChild(newTxt);
+                            }
+                        </script>
+                <tr>
+                    <td>Enter student contact:</td>
+                    <td><input type="text" name="contact"/></td>
+                </tr>
+                <tr>
+                    <td></td>
+                    <td><input type="submit" value="Register Student"/></td>
+                </tr>
+            </table>
+        </form>
+    </body>
+</html>
